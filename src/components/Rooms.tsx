@@ -15,23 +15,23 @@ import {
 } from "react-icons/fa";
 
 /* =======================
-   ROOM IMAGES
+   ROOM IMAGES (require)
 ======================= */
 
 // Double Room with Balcony
-import db1 from "@/resource/1211.jpg";
-import db2 from "@/resource/1211.jpg";
-import db3 from "@/resource/1211.jpg";
+const db1: StaticImageData = require("../resource/1211.jpg");
+const db2: StaticImageData = require("../resource/1211.jpg");
+const db3: StaticImageData = require("../resource/1211.jpg");
 
 // Double Room with Sea View
-import ds1 from "@/resource/1201.jpg";
-import ds2 from "@/resource/1211.jpg";
-import ds3 from "@/resource/1201.jpg";
+const ds1: StaticImageData = require("../resource/1201.jpg");
+const ds2: StaticImageData = require("../resource/1211.jpg");
+const ds3: StaticImageData = require("../resource/1201.jpg");
 
 // Deluxe Triple Room
-import ts1 from "@/resource/1211.jpg";
-import ts2 from "@/resource/1211.jpg";
-import ts3 from "@/resource/1211.jpg";
+const ts1: StaticImageData = require("../resource/1211.jpg");
+const ts2: StaticImageData = require("../resource/1211.jpg");
+const ts3: StaticImageData = require("../resource/1211.jpg");
 
 /* =======================
    TYPES
