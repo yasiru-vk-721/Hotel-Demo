@@ -1,265 +1,294 @@
 "use client";
 
-import { motion } from "framer-motion";
-import Image, { StaticImageData } from "next/image";
 import { useState } from "react";
-import {
-  FaBed,
-  FaRulerCombined,
-  FaWifi,
-  FaSnowflake,
-  FaBath,
-  FaSmokingBan,
-  FaTripadvisor,
-  FaBook,
-} from "react-icons/fa";
+import Image, { StaticImageData } from "next/image";
+import { motion, AnimatePresence } from "framer-motion";
 
-/* =======================
-   ROOM IMAGES (require)
-======================= */
-
-// Double Room with Balcony
-const db1: StaticImageData = require("../resource/1211.jpg");
-const db2: StaticImageData = require("../resource/1211.jpg");
-const db3: StaticImageData = require("../resource/1211.jpg");
-
-// Double Room with Sea View
-const ds1: StaticImageData = require("../resource/1201.jpg");
-const ds2: StaticImageData = require("../resource/1211.jpg");
-const ds3: StaticImageData = require("../resource/1201.jpg");
-
-// Deluxe Triple Room
-const ts1: StaticImageData = require("../resource/1211.jpg");
-const ts2: StaticImageData = require("../resource/1211.jpg");
-const ts3: StaticImageData = require("../resource/1211.jpg");
-
-/* =======================
+/* =========================
    TYPES
-======================= */
+========================= */
 
 type Room = {
   title: string;
   size: string;
-  beds: string;
+  bed: string;
   rating: string;
   description: string;
+  views: string[];
+  highlights: string[];
+  bathroom: string[];
   facilities: string[];
+  smoking: string;
   images: StaticImageData[];
 };
 
-/* =======================
-   DATA
-======================= */
+/* =========================
+   ROOM DATA (require syntax)
+========================= */
 
 const rooms: Room[] = [
   {
     title: "Double Room with Balcony",
     size: "16 m²",
-    beds: "1 King Bed",
-    rating: "8.6 / 10 (200 reviews)",
+    bed: "1 Extra-large Double Bed",
+    rating: "Comfy beds · 8.6 (200 reviews)",
     description:
-      "Air-conditioned room with private entrance, balcony with sea and garden views, soundproofing, and private bathroom with shower.",
-    facilities: [
+      "The double room features air conditioning, a private entrance, a balcony with sea views as well as a private bathroom boasting a shower.",
+    views: ["Sea view", "Garden view"],
+    highlights: [
       "Balcony",
-      "Sea view",
-      "Garden view",
       "Air conditioning",
-      "Private bathroom",
-      "Soundproof",
+      "Soundproofing",
       "Free WiFi",
+      "Private bathroom",
+    ],
+    bathroom: ["Free toiletries", "Shower", "Toilet", "Towels", "Toilet paper"],
+    facilities: [
+      "Socket near the bed",
+      "Tile / marble floor",
+      "Private entrance",
       "Refrigerator",
       "Electric kettle",
-      "Wardrobe",
-      "No smoking",
+      "Wardrobe or closet",
+      "Clothes rack",
+      "Ironing facilities",
+      "Hand sanitiser",
     ],
-    images: [db1, db2, db3],
+    smoking: "No smoking",
+    images: [
+      require("../resource/1201.jpg") as StaticImageData,
+      require("../resource/1211.jpg") as StaticImageData,
+    ],
   },
   {
     title: "Double Room with Sea View",
     size: "18 m²",
-    beds: "1 King Bed",
-    rating: "8.6 / 10 (200 reviews)",
+    bed: "1 Extra-large Double Bed",
+    rating: "Comfy beds · 8.6 (200 reviews)",
     description:
-      "Spacious double room offering a balcony with panoramic sea views, private entrance, and modern private bathroom.",
+      "The double room offers air conditioning, a private entrance, a balcony with sea views as well as a private bathroom featuring a shower.",
+    views: ["Sea view", "Garden view"],
+    highlights: ["Balcony", "Sea view", "Air conditioning", "Soundproofing", "Free WiFi"],
+    bathroom: ["Free toiletries", "Shower", "Toilet", "Towels", "Toilet paper"],
     facilities: [
-      "Balcony",
-      "Sea view",
-      "Garden view",
-      "Air conditioning",
-      "Private bathroom",
-      "Soundproof",
-      "Free WiFi",
+      "Socket near the bed",
+      "Tile / marble floor",
+      "Private entrance",
       "Refrigerator",
       "Electric kettle",
-      "Wardrobe",
-      "No smoking",
+      "Wardrobe or closet",
+      "Clothes rack",
+      "Ironing facilities",
+      "Hand sanitiser",
     ],
-    images: [ds1, ds2, ds3],
+    smoking: "No smoking",
+    images: [
+      require("../resource/1211.jpg") as StaticImageData,
+      require("../resource/1201.jpg") as StaticImageData,
+    ],
   },
   {
     title: "Deluxe Triple Room with Sea View",
     size: "20 m²",
-    beds: "1 Full Bed & 1 King Bed",
-    rating: "8.6 / 10 (200 reviews)",
+    bed: "1 Double Bed + 1 Extra-large Double Bed",
+    rating: "Comfy beds · 8.6 (200 reviews)",
     description:
-      "Large triple room with balcony, sea views, private entrance, and comfortable bedding ideal for families.",
+      "The triple room offers air conditioning, a private entrance, a balcony with sea views as well as a private bathroom featuring a shower.",
+    views: ["Sea view", "Garden view"],
+    highlights: ["Balcony", "Sea view", "Air conditioning", "Soundproofing", "Free WiFi"],
+    bathroom: ["Free toiletries", "Shower", "Toilet", "Towels", "Toilet paper"],
     facilities: [
-      "Balcony",
-      "Sea view",
-      "Garden view",
-      "Air conditioning",
-      "Private bathroom",
-      "Soundproof",
-      "Free WiFi",
+      "Socket near the bed",
+      "Tile / marble floor",
+      "Private entrance",
       "Refrigerator",
       "Electric kettle",
-      "Wardrobe",
-      "No smoking",
+      "Wardrobe or closet",
+      "Clothes rack",
+      "Ironing facilities",
+      "Hand sanitiser",
     ],
-    images: [ts1, ts2, ts3],
+    smoking: "No smoking",
+    images: [
+      require("../resource/1201.jpg") as StaticImageData,
+      require("../resource/1211.jpg") as StaticImageData,
+    ],
   },
 ];
 
-/* =======================
-   IMAGE CAROUSEL
-======================= */
+/* =========================
+   IMAGE GALLERY
+========================= */
 
-function RoomGallery({ images }: { images: StaticImageData[] }) {
+function Gallery({ images }: { images: StaticImageData[] }) {
   const [index, setIndex] = useState(0);
 
   return (
-    <div className="relative h-[260px] md:h-[340px] rounded-2xl overflow-hidden mb-6">
-      <Image
-        src={images[index]}
-        alt="Room image"
-        fill
-        className="object-cover transition-all duration-500"
-        priority
-      />
+    <div className="relative h-[420px] md:h-[500px] overflow-hidden rounded-xl">
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={index}
+          initial={{ opacity: 0, x: 50 }}
+          animate={{ opacity: 1, x: 0 }}
+          exit={{ opacity: 0, x: -50 }}
+          transition={{ duration: 0.5 }}
+          className="absolute inset-0"
+        >
+          <Image
+            src={images[index]}
+            alt="Room image"
+            fill
+            priority
+            className="object-cover rounded-xl"
+          />
+        </motion.div>
+      </AnimatePresence>
 
-      {/* Prev */}
+      {/* Controls */}
       <button
-        onClick={() =>
-          setIndex((index - 1 + images.length) % images.length)
-        }
-        className="absolute left-3 top-1/2 -translate-y-1/2 bg-black/40 text-white px-3 py-1 rounded-full"
+        onClick={() => setIndex((index - 1 + images.length) % images.length)}
+        className="absolute left-4 top-1/2 -translate-y-1/2 bg-black/40 text-white px-3 py-1 rounded-full"
       >
         ‹
       </button>
-
-      {/* Next */}
       <button
         onClick={() => setIndex((index + 1) % images.length)}
-        className="absolute right-3 top-1/2 -translate-y-1/2 bg-black/40 text-white px-3 py-1 rounded-full"
+        className="absolute right-4 top-1/2 -translate-y-1/2 bg-black/40 text-white px-3 py-1 rounded-full"
       >
         ›
       </button>
-
-      {/* Dots */}
-      <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-2">
-        {images.map((_, i) => (
-          <span
-            key={i}
-            onClick={() => setIndex(i)}
-            className={`h-2 w-2 rounded-full cursor-pointer ${
-              i === index ? "bg-white" : "bg-white/50"
-            }`}
-          />
-        ))}
-      </div>
     </div>
   );
 }
 
-/* =======================
+/* =========================
+   COLLAPSIBLE COMPONENT
+========================= */
+
+function Collapsible({ title, items }: { title: string; items: string[] }) {
+  const [open, setOpen] = useState(false);
+
+  return (
+    <div className="border border-gray-200 rounded-lg overflow-hidden">
+      <button
+        onClick={() => setOpen(!open)}
+        className="w-full text-left px-4 py-2 bg-gray-100 font-semibold flex justify-between items-center"
+      >
+        {title}
+        <span>{open ? "▲" : "▼"}</span>
+      </button>
+      <AnimatePresence>
+        {open && (
+          <motion.ul
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            className="px-6 py-3 grid grid-cols-1 md:grid-cols-2 gap-2 text-gray-700"
+          >
+            {items.map((item, i) => (
+              <li key={i}>• {item}</li>
+            ))}
+          </motion.ul>
+        )}
+      </AnimatePresence>
+    </div>
+  );
+}
+
+/* =========================
    MAIN COMPONENT
-======================= */
+========================= */
 
 export default function Rooms() {
   return (
-    <section id="rooms" className="py-28 px-6 bg-[#F9FAFB]">
-      <div className="max-w-7xl mx-auto">
-        <motion.h2
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.7 }}
-          className="text-4xl font-bold text-center text-[#0B3C5D] mb-20"
-        >
+    <section className="py-28 px-6 bg-[#F9FAFB] text-gray-800">
+      <div className="max-w-7xl mx-auto space-y-32">
+        <h2 className="text-4xl font-bold text-center text-[#0B3C5D]">
           Our Rooms
-        </motion.h2>
+        </h2>
 
-        <div className="space-y-24">
-          {rooms.map((room, idx) => (
-            <motion.div
-              key={idx}
-              initial={{ opacity: 0, y: 60 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.7 }}
-              className="bg-white rounded-3xl shadow-xl p-6 md:p-10"
-            >
-              <RoomGallery images={room.images} />
+        {rooms.map((room, i) => (
+          <motion.div
+            key={i}
+            initial={{ opacity: 0, y: 60 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7 }}
+            className="grid md:grid-cols-2 gap-16 items-start"
+          >
+            {/* LEFT: Gallery */}
+            <Gallery images={room.images} />
 
-              <h3 className="text-3xl font-semibold mb-2 text-[#0B3C5D]">
-                {room.title}
-              </h3>
+            {/* RIGHT: Details */}
+            <div className="space-y-6 md:pt-6">
 
-              <p className="text-gray-500 mb-4">{room.rating}</p>
-
-              <div className="flex flex-wrap gap-6 mb-6 text-gray-600">
-                <span className="flex items-center gap-2">
-                  <FaRulerCombined /> {room.size}
-                </span>
-                <span className="flex items-center gap-2">
-                  <FaBed /> {room.beds}
-                </span>
-                <span className="flex items-center gap-2">
-                  <FaWifi /> Free WiFi
-                </span>
-                <span className="flex items-center gap-2">
-                  <FaSnowflake /> Air Conditioning
-                </span>
-                <span className="flex items-center gap-2">
-                  <FaBath /> Private Bathroom
-                </span>
-                <span className="flex items-center gap-2">
-                  <FaSmokingBan /> No Smoking
-                </span>
+              {/* Title + Rating */}
+              <div>
+                <h3 className="text-3xl md:text-4xl font-bold text-[#0B3C5D]">
+                  {room.title}
+                </h3>
+                <p className="text-gray-700 mt-1">{room.rating}</p>
               </div>
 
-              <p className="text-gray-700 mb-6 leading-relaxed">
-                {room.description}
-              </p>
-
-              {/* Facilities */}
-              <ul className="grid grid-cols-2 md:grid-cols-3 gap-3 text-gray-600 mb-8">
-                {room.facilities.map((f, i) => (
-                  <li key={i}>• {f}</li>
+              {/* Badges */}
+              <div className="flex flex-wrap gap-3">
+                <span className="bg-[#E6C27A] text-white px-3 py-1 rounded-full text-sm font-semibold">
+                  {room.size}
+                </span>
+                <span className="bg-[#0B3C5D] text-white px-3 py-1 rounded-full text-sm font-semibold">
+                  {room.bed}
+                </span>
+                {room.views.map((v, i) => (
+                  <span
+                    key={i}
+                    className="bg-[#34E0A1] text-black px-3 py-1 rounded-full text-sm font-semibold"
+                  >
+                    {v}
+                  </span>
                 ))}
-              </ul>
-
-              {/* Booking Buttons */}
-              <div className="flex flex-wrap gap-4">
-                <a
-                  href="https://www.booking.com"
-                  target="_blank"
-                  className="flex items-center gap-2 bg-[#003580] text-white px-6 py-3 rounded-full hover:opacity-90"
-                >
-                  <FaBook /> Booking.com
-                </a>
-
-                <a
-                  href="https://www.tripadvisor.com"
-                  target="_blank"
-                  className="flex items-center gap-2 bg-[#34E0A1] text-black px-6 py-3 rounded-full hover:opacity-90"
-                >
-                  <FaTripadvisor /> Tripadvisor
-                </a>
               </div>
-            </motion.div>
-          ))}
-        </div>
+
+              {/* Description Card */}
+              <div className="bg-white shadow-md p-6 rounded-xl border-l-4 border-[#0B3C5D]">
+                <p className="text-gray-700 leading-relaxed">{room.description}</p>
+              </div>
+
+              {/* Highlights */}
+              <div>
+                <h4 className="font-semibold mb-3 text-[#0B3C5D]">Room Highlights</h4>
+                <div className="flex flex-wrap gap-3">
+                  {room.highlights.map((item, i) => (
+                    <span
+                      key={i}
+                      className="flex items-center gap-1 bg-[#F9FAFB] border border-gray-300 px-3 py-1 rounded-full text-sm font-medium text-gray-700"
+                    >
+                      ✔ {item}
+                    </span>
+                  ))}
+                </div>
+              </div>
+
+              {/* Collapsibles */}
+              <div className="space-y-4">
+                <Collapsible title="Private Bathroom" items={room.bathroom} />
+                <Collapsible title="Room Facilities" items={room.facilities} />
+              </div>
+
+              {/* Smoking */}
+              <p className="text-sm text-gray-700">🚭 {room.smoking}</p>
+
+              {/* CTA */}
+              <a
+                href="https://www.booking.com"
+                target="_blank"
+                className="inline-block bg-[#0B3C5D] text-white px-10 py-4 rounded-full hover:bg-[#092f48]"
+              >
+                Check Availability
+              </a>
+            </div>
+          </motion.div>
+        ))}
       </div>
     </section>
   );

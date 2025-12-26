@@ -13,7 +13,7 @@ import RoomsPreview from "@/components/RoomsPreview";
 
 export default function Home() {
   return (
-    <main className="snap-y snap-mandatory overflow-scroll h-screen">
+    <main className="snap-y snap-mandatory">
       <section className="snap-start">
         <Hero />
       </section>
