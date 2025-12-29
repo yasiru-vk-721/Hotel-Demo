@@ -7,7 +7,6 @@ import { motion, AnimatePresence } from "framer-motion";
 /* =========================
    TYPES
 ========================= */
-
 type Room = {
   title: string;
   size: string;
@@ -25,7 +24,6 @@ type Room = {
 /* =========================
    ROOM DATA (require syntax)
 ========================= */
-
 const rooms: Room[] = [
   {
     title: "Double Room with Balcony",
@@ -56,8 +54,8 @@ const rooms: Room[] = [
     ],
     smoking: "No smoking",
     images: [
-      require("../resource/1201.jpg") as StaticImageData,
-      require("../resource/1211.jpg") as StaticImageData,
+      require("../resource/330490273.jpg") as StaticImageData,
+      require("../resource/330490293.jpg") as StaticImageData,
     ],
   },
   {
@@ -83,8 +81,8 @@ const rooms: Room[] = [
     ],
     smoking: "No smoking",
     images: [
-      require("../resource/1211.jpg") as StaticImageData,
-      require("../resource/1201.jpg") as StaticImageData,
+      require("../resource/330490309.jpg") as StaticImageData,
+      require("../resource/330490293.jpg") as StaticImageData,
     ],
   },
   {
@@ -110,8 +108,8 @@ const rooms: Room[] = [
     ],
     smoking: "No smoking",
     images: [
-      require("../resource/1201.jpg") as StaticImageData,
-      require("../resource/1211.jpg") as StaticImageData,
+      require("../resource/330490293.jpg") as StaticImageData,
+      require("../resource/330490273.jpg") as StaticImageData,
     ],
   },
 ];
@@ -119,7 +117,6 @@ const rooms: Room[] = [
 /* =========================
    IMAGE GALLERY
 ========================= */
-
 function Gallery({ images }: { images: StaticImageData[] }) {
   const [index, setIndex] = useState(0);
 
@@ -131,7 +128,7 @@ function Gallery({ images }: { images: StaticImageData[] }) {
           initial={{ opacity: 0, x: 50 }}
           animate={{ opacity: 1, x: 0 }}
           exit={{ opacity: 0, x: -50 }}
-          transition={{ duration: 0.5 }}
+          transition={{ duration: 0.15 }}
           className="absolute inset-0"
         >
           <Image
@@ -144,27 +141,28 @@ function Gallery({ images }: { images: StaticImageData[] }) {
         </motion.div>
       </AnimatePresence>
 
-      {/* Controls */}
+      {/* White Symmetrical Controls */}
       <button
         onClick={() => setIndex((index - 1 + images.length) % images.length)}
-        className="absolute left-4 top-1/2 -translate-y-1/2 bg-black/40 text-white px-3 py-1 rounded-full"
+        className="absolute left-4 top-1/2 -translate-y-1/2 w-8 h-8 bg-white/80 hover:bg-white text-[#0B3C5D] hover:text-black rounded-full shadow-lg flex items-center justify-center text-lg"
       >
         ‹
       </button>
       <button
         onClick={() => setIndex((index + 1) % images.length)}
-        className="absolute right-4 top-1/2 -translate-y-1/2 bg-black/40 text-white px-3 py-1 rounded-full"
+        className="absolute right-4 top-1/2 -translate-y-1/2 w-8 h-8 bg-white/80 hover:bg-white text-[#0B3C5D] hover:text-black rounded-full shadow-lg flex items-center justify-center text-lg"
       >
         ›
       </button>
+
     </div>
   );
 }
 
+
 /* =========================
    COLLAPSIBLE COMPONENT
 ========================= */
-
 function Collapsible({ title, items }: { title: string; items: string[] }) {
   const [open, setOpen] = useState(false);
 
@@ -199,96 +197,139 @@ function Collapsible({ title, items }: { title: string; items: string[] }) {
 /* =========================
    MAIN COMPONENT
 ========================= */
-
 export default function Rooms() {
   return (
-    <section className="py-28 px-6 bg-[#F9FAFB] text-gray-800">
-      <div className="max-w-7xl mx-auto space-y-32">
-        <h2 className="text-4xl font-bold text-center text-[#0B3C5D]">
-          Our Rooms
-        </h2>
+    <section className="py-28 px-6 bg-[#F9FAFB] text-gray-800 mt-10 mb-10">
+      <div className="max-w-7xl mx-auto space-y-12">
+        {/* Heading */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7 }}
+          className="text-center"
+        >
+          <h2 className="text-4xl md:text-5xl font-extrabold text-[#0B3C5D] leading-tight">
+            Discover Our Exclusive Rooms
+          </h2>
+          <p className="text-gray-600 mt-4 text-lg md:text-xl">
+            Comfortable, stylish, and designed for your perfect stay.
+          </p>
+        </motion.div>
 
-        {rooms.map((room, i) => (
-          <motion.div
-            key={i}
-            initial={{ opacity: 0, y: 60 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7 }}
-            className="grid md:grid-cols-2 gap-16 items-start"
-          >
-            {/* LEFT: Gallery */}
-            <Gallery images={room.images} />
+        {/* Rooms */}
+        <div className="space-y-32">
+          {rooms.map((room, i) => (
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, y: 60 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7 }}
+              className="grid md:grid-cols-2 gap-16 items-start"
+            >
+              {/* LEFT: Gallery */}
+              <Gallery images={room.images} />
 
-            {/* RIGHT: Details */}
-            <div className="space-y-6 md:pt-6">
+              {/* RIGHT: Details */}
+              <div className="space-y-6 md:pt-6">
+                {/* Title + Rating */}
+                <div>
+                  <h3 className="text-3xl md:text-4xl font-bold text-[#0B3C5D]">
+                    {room.title}
+                  </h3>
+                  <p className="text-gray-700 mt-1">{room.rating}</p>
+                </div>
 
-              {/* Title + Rating */}
-              <div>
-                <h3 className="text-3xl md:text-4xl font-bold text-[#0B3C5D]">
-                  {room.title}
-                </h3>
-                <p className="text-gray-700 mt-1">{room.rating}</p>
-              </div>
-
-              {/* Badges */}
-              <div className="flex flex-wrap gap-3">
-                <span className="bg-[#E6C27A] text-white px-3 py-1 rounded-full text-sm font-semibold">
-                  {room.size}
-                </span>
-                <span className="bg-[#0B3C5D] text-white px-3 py-1 rounded-full text-sm font-semibold">
-                  {room.bed}
-                </span>
-                {room.views.map((v, i) => (
-                  <span
-                    key={i}
-                    className="bg-[#34E0A1] text-black px-3 py-1 rounded-full text-sm font-semibold"
-                  >
-                    {v}
-                  </span>
-                ))}
-              </div>
-
-              {/* Description Card */}
-              <div className="bg-white shadow-md p-6 rounded-xl border-l-4 border-[#0B3C5D]">
-                <p className="text-gray-700 leading-relaxed">{room.description}</p>
-              </div>
-
-              {/* Highlights */}
-              <div>
-                <h4 className="font-semibold mb-3 text-[#0B3C5D]">Room Highlights</h4>
+                {/* Badges */}
                 <div className="flex flex-wrap gap-3">
-                  {room.highlights.map((item, i) => (
+                  <span className="bg-[#E6C27A] text-white px-3 py-1 rounded-full text-sm font-semibold">
+                    {room.size}
+                  </span>
+                  <span className="bg-[#0B3C5D] text-white px-3 py-1 rounded-full text-sm font-semibold">
+                    {room.bed}
+                  </span>
+                  {room.views.map((v, i) => (
                     <span
                       key={i}
-                      className="flex items-center gap-1 bg-[#F9FAFB] border border-gray-300 px-3 py-1 rounded-full text-sm font-medium text-gray-700"
+                      className="bg-[#34E0A1] text-black px-3 py-1 rounded-full text-sm font-semibold"
                     >
-                      ✔ {item}
+                      {v}
                     </span>
                   ))}
                 </div>
+
+                {/* Description Card */}
+                <div className="bg-white shadow-md p-6 rounded-xl border-l-4 border-[#0B3C5D]">
+                  <p className="text-gray-700 leading-relaxed">{room.description}</p>
+                </div>
+
+                {/* Highlights */}
+                <div>
+                  <h4 className="font-semibold mb-3 text-[#0B3C5D]">Room Highlights</h4>
+                  <div className="flex flex-wrap gap-3">
+                    {room.highlights.map((item, i) => (
+                      <span
+                        key={i}
+                        className="flex items-center gap-1 bg-[#F9FAFB] border border-gray-300 px-3 py-1 rounded-full text-sm font-medium text-gray-700"
+                      >
+                        ✔ {item}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Collapsibles */}
+                <div className="space-y-4">
+                  <Collapsible title="Private Bathroom" items={room.bathroom} />
+                  <Collapsible title="Room Facilities" items={room.facilities} />
+                </div>
+
+                {/* Smoking */}
+                <p className="text-sm text-gray-700">🚭 {room.smoking}</p>
+
+                {/* CTA / Booking Links */}
+                <div className="flex flex-wrap gap-4 mt-6">
+                  <a
+                    href="https://www.booking.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 bg-[#003580] text-white px-6 py-3 rounded-full hover:opacity-90 transition"
+                  >
+                    Booking.com
+                  </a>
+
+                  <a
+                    href="https://www.tripadvisor.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 bg-[#34E0A1] text-black px-6 py-3 rounded-full hover:opacity-90 transition"
+                  >
+                    Tripadvisor
+                  </a>
+
+                  <a
+                    href="https://www.agoda.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 bg-[#FF5A5F] text-white px-6 py-3 rounded-full hover:opacity-90 transition"
+                  >
+                    Agoda
+                  </a>
+
+                  <a
+                    href="https://www.expedia.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 bg-[#0071c2] text-white px-6 py-3 rounded-full hover:opacity-90 transition"
+                  >
+                    Expedia
+                  </a>
+                </div>
               </div>
-
-              {/* Collapsibles */}
-              <div className="space-y-4">
-                <Collapsible title="Private Bathroom" items={room.bathroom} />
-                <Collapsible title="Room Facilities" items={room.facilities} />
-              </div>
-
-              {/* Smoking */}
-              <p className="text-sm text-gray-700">🚭 {room.smoking}</p>
-
-              {/* CTA */}
-              <a
-                href="https://www.booking.com"
-                target="_blank"
-                className="inline-block bg-[#0B3C5D] text-white px-10 py-4 rounded-full hover:bg-[#092f48]"
-              >
-                Check Availability
-              </a>
-            </div>
-          </motion.div>
-        ))}
+            </motion.div>
+          ))}
+        </div>
       </div>
     </section>
   );

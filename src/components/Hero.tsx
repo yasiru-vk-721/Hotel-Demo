@@ -82,7 +82,7 @@ export default function Hero() {
           </p>
 
           <a
-            href="#contact"
+            href="/contact"
             className="inline-block bg-[#E6C27A] text-black px-8 py-4 rounded-full font-semibold hover:scale-105 transition"
           >
             Contact Us

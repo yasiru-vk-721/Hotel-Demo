@@ -60,10 +60,11 @@ export default function Navbar() {
             showLightNavbar ? "text-white" : "text-gray-800"
           }`}
         >
-          <a href="#about" className="hover:text-[#E6C27A]">Attractions</a>
-          <a href="#attractions" className="hover:text-[#E6C27A]">Rooms</a>
+          <a href="/" className="hover:text-[#E6C27A]">Home</a>
+          {/* <a href="#about" className="hover:text-[#E6C27A]">Attractions</a> */}
+          <a href="/rooms" className="hover:text-[#E6C27A]">Rooms</a>
           <a href="#gallery" className="hover:text-[#E6C27A]">Gallery</a>
-          <a href="#contact" className="hover:text-[#E6C27A]">Contact</a>
+          <a href="/contact" className="hover:text-[#E6C27A]">Contact</a>
         </div>
 
         {/* Mobile Burger */}
@@ -103,10 +104,10 @@ export default function Navbar() {
             exit={{ opacity: 0, y: -20 }}
             className="md:hidden fixed top-20 left-0 w-full bg-white shadow-lg z-40 flex flex-col items-center py-6 space-y-6 font-semibold rounded-b-2xl text-gray-800"
           >
-            <a href="#about" onClick={() => setMenuOpen(false)}>Attractions</a>
-            <a href="#attractions" onClick={() => setMenuOpen(false)}>Rooms</a>
+            <a href="/" onClick={() => setMenuOpen(false)}>Home</a>
+            <a href="/rooms" onClick={() => setMenuOpen(false)}>Rooms</a>
             <a href="#gallery" onClick={() => setMenuOpen(false)}>Gallery</a>
-            <a href="#contact" onClick={() => setMenuOpen(false)}>Contact</a>
+            <a href="/contact" onClick={() => setMenuOpen(false)}>Contact</a>
           </motion.div>
         )}
       </AnimatePresence>

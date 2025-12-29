@@ -10,6 +10,8 @@ import Contact from "../components/Contact";
 import Welcome from "../components/Welcome";
 import Facilities from "../components/Facilities";
 import RoomsPreview from "@/components/RoomsPreview";
+import ContactUs from "@/components/ContactUs";
+
 
 export default function Home() {
   return (
@@ -37,6 +39,11 @@ export default function Home() {
       <section className="snap-start">
         <Reviews />
       </section>
+
+      {/* <section className="snap-start">
+        <ContactUs />
+      </section> */}
+
     </main>
   );
 }
