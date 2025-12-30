@@ -199,7 +199,7 @@ function Collapsible({ title, items }: { title: string; items: string[] }) {
 ========================= */
 export default function Rooms() {
   return (
-    <section className="py-28 px-6 bg-[#F9FAFB] text-gray-800 mt-10 mb-10">
+    <section className="pt-28 pb-16 px-6 bg-[#F9FAFB] text-gray-800">
       <div className="max-w-7xl mx-auto space-y-12">
         {/* Heading */}
         <motion.div

@@ -12,56 +12,48 @@ export default function Navbar() {
   const pathname = usePathname();
 
   const isHome = pathname === "/";
-  const showLightNavbar = isHome && !scrolled;
+  const showLightNavbar = isHome ? scrolled : true; // always solid on other pages
 
   useEffect(() => {
-    // 🔒 Force dark navbar on non-home pages
-    if (pathname !== "/") {
-      setScrolled(true);
+    if (!isHome) {
+      setScrolled(true); // force solid on non-home pages
       return;
     }
 
-    const onScroll = () => setScrolled(window.scrollY > 60);
+    const handleScroll = () => setScrolled(window.scrollY > 50);
 
-    onScroll(); // run immediately
-    window.addEventListener("scroll", onScroll);
+    handleScroll(); // initial check
+    window.addEventListener("scroll", handleScroll);
 
-    return () => window.removeEventListener("scroll", onScroll);
-  }, [pathname]);
-
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [isHome]);
 
   return (
     <motion.nav
       animate={{
         backgroundColor: showLightNavbar
-          ? "rgba(255,255,255,0)"
-          : "rgba(255,255,255,0.95)",
+          ? "rgba(255,255,255,0.95)"
+          : "rgba(255,255,255,0)",
         boxShadow: showLightNavbar
-          ? "none"
-          : "0 10px 30px rgba(0,0,0,0.08)",
+          ? "0 10px 30px rgba(0,0,0,0.08)"
+          : "none",
       }}
       transition={{ duration: 0.3 }}
       className="fixed top-0 w-full z-50 backdrop-blur-md"
     >
       <div className="max-w-7xl mx-auto flex justify-between items-center px-6 h-20 md:h-24">
-        
         {/* Logo */}
-        <motion.div
-          animate={{ scale: scrolled ? 0.95 : 1 }}
-          transition={{ duration: 0.3 }}
-          className="relative w-36 h-12 md:w-48 md:h-14"
-        >
+        <div className="relative w-36 h-12 md:w-48 md:h-14">
           <Image src={logo} alt="Shanora Beach Logo" fill priority />
-        </motion.div>
+        </div>
 
         {/* Desktop Nav */}
         <div
           className={`hidden md:flex space-x-10 text-base font-semibold transition-colors duration-300 ${
-            showLightNavbar ? "text-white" : "text-gray-800"
+            showLightNavbar ? "text-gray-800" : "text-white"
           }`}
         >
           <a href="/" className="hover:text-[#E6C27A]">Home</a>
-          {/* <a href="#about" className="hover:text-[#E6C27A]">Attractions</a> */}
           <a href="/rooms" className="hover:text-[#E6C27A]">Rooms</a>
           <a href="#gallery" className="hover:text-[#E6C27A]">Gallery</a>
           <a href="/contact" className="hover:text-[#E6C27A]">Contact</a>
@@ -71,7 +63,7 @@ export default function Navbar() {
         <button
           onClick={() => setMenuOpen(!menuOpen)}
           className={`md:hidden fixed top-5 right-5 z-50 w-10 h-10 flex items-center justify-center ${
-            showLightNavbar ? "text-white" : "text-gray-800"
+            showLightNavbar ? "text-gray-800" : "text-white"
           }`}
         >
           {!menuOpen ? (

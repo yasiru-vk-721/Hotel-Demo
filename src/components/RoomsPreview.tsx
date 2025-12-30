@@ -23,7 +23,7 @@ export default function RoomsPreview() {
   }, []);
 
   return (
-    <section className="py-24 px-6 bg-gradient-to-b from-[#E6F0FA] to-white">
+    <section className="py-24 px-6 bg-gradient-to-b from-[#E6F0FA] to-white overflow-hidden">
       <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-16 items-center">
 
         {/* LEFT CONTENT */}
@@ -67,9 +67,10 @@ export default function RoomsPreview() {
                 }}
                 transition={{ duration: 0.8 }}
                 className={`absolute rounded-3xl overflow-hidden shadow-2xl
-                  ${i === 0 ? "top-0 left-0" : ""}
-                  ${i === 1 ? "top-20 left-20" : ""}
-                  ${i === 2 ? "top-40 left-40" : ""}
+                ${i === 0 ? "top-0 left-0" : ""}
+                ${i === 1 ? "top-20 left-12" : ""}
+                ${i === 2 ? "top-40 left-24" : ""}
+
                 `}
                 style={{
                   zIndex: isActive ? 30 : i + 10,
