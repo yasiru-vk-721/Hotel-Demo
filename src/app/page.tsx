@@ -11,6 +11,7 @@ import Welcome from "../components/Welcome";
 import Facilities from "../components/Facilities";
 import RoomsPreview from "@/components/RoomsPreview";
 import ContactUs from "@/components/ContactUs";
+import HotelStats from "@/components/Stats";
 
 
 export default function Home() {
@@ -22,6 +23,10 @@ export default function Home() {
 
       <section className="snap-start">
         <Welcome />
+      </section>
+
+      <section className="snap-start">
+        <HotelStats />
       </section>
 
       <section className="snap-start">

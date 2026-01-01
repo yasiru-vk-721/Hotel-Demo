@@ -4,9 +4,9 @@ import { motion } from "framer-motion";
 import Image, { StaticImageData } from "next/image";
 
 // Local images
-import pic1 from "../resource/pic1.avif";
+import pic1 from "../resource/1201.jpg";
 import pic2 from "../resource/pic2.jpg";
-import pic3 from "../resource/pic3.avif";
+import pic3 from "../resource/1201.jpg";
 import pic4 from "../resource/1201.jpg";
 import pic5 from "../resource/1211.jpg";
 

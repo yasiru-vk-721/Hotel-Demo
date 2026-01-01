@@ -299,7 +299,7 @@ export default function Rooms() {
                     Booking.com
                   </a>
 
-                  <a
+                  {/* <a
                     href="https://www.tripadvisor.com"
                     target="_blank"
                     rel="noopener noreferrer"
@@ -324,7 +324,7 @@ export default function Rooms() {
                     className="flex items-center gap-2 bg-[#0071c2] text-white px-6 py-3 rounded-full hover:opacity-90 transition"
                   >
                     Expedia
-                  </a>
+                  </a> */}
                 </div>
               </div>
             </motion.div>

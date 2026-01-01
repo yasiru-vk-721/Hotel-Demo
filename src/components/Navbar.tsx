@@ -3,8 +3,6 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
-import Image from "next/image";
-import logo from "@/resource/logopic1.png";
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -12,19 +10,18 @@ export default function Navbar() {
   const pathname = usePathname();
 
   const isHome = pathname === "/";
-  const showLightNavbar = isHome ? scrolled : true; // always solid on other pages
+  const showLightNavbar = isHome ? scrolled : true;
 
   useEffect(() => {
     if (!isHome) {
-      setScrolled(true); // force solid on non-home pages
+      setScrolled(true);
       return;
     }
 
-    const handleScroll = () => setScrolled(window.scrollY > 50);
+    const handleScroll = () => setScrolled(window.scrollY > 60);
 
-    handleScroll(); // initial check
+    handleScroll();
     window.addEventListener("scroll", handleScroll);
-
     return () => window.removeEventListener("scroll", handleScroll);
   }, [isHome]);
 
@@ -38,13 +35,18 @@ export default function Navbar() {
           ? "0 10px 30px rgba(0,0,0,0.08)"
           : "none",
       }}
-      transition={{ duration: 0.3 }}
+      transition={{ duration: 0.3, ease: "easeOut" }}
       className="fixed top-0 w-full z-50 backdrop-blur-md"
     >
       <div className="max-w-7xl mx-auto flex justify-between items-center px-6 h-20 md:h-24">
-        {/* Logo */}
-        <div className="relative w-36 h-12 md:w-48 md:h-14">
-          <Image src={logo} alt="Shanora Beach Logo" fill priority />
+        
+        {/* TEXT LOGO */}
+        <div
+          className={`text-2xl md:text-3xl font-extrabold tracking-wider transition-colors duration-300 ${
+            showLightNavbar ? "text-[#0B3C5D]" : "text-white font-Bold" 
+          }`}
+        >
+          Business Logo
         </div>
 
         {/* Desktop Nav */}
@@ -68,9 +70,9 @@ export default function Navbar() {
         >
           {!menuOpen ? (
             <div className="flex flex-col justify-between w-6 h-6">
-              <span className="block w-full h-0.5 bg-current rounded"></span>
-              <span className="block w-full h-0.5 bg-current rounded"></span>
-              <span className="block w-full h-0.5 bg-current rounded"></span>
+              <span className="block w-full h-0.5 bg-current rounded" />
+              <span className="block w-full h-0.5 bg-current rounded" />
+              <span className="block w-full h-0.5 bg-current rounded" />
             </div>
           ) : (
             <div className="relative w-6 h-6">
