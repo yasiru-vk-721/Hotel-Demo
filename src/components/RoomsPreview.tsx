@@ -5,9 +5,9 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
-import room1 from "@/resource/330490273.jpg";
-import room2 from "@/resource/330490293.jpg";
-import room3 from "@/resource/330490309.jpg";
+import room1 from "@/resource/navap3.jpg";
+import room2 from "@/resource/navap4.jpg";
+import room3 from "@/resource/nava1.jpg";
 
 const images = [room1, room2, room3];
 

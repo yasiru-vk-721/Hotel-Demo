@@ -10,9 +10,9 @@ type Stat = {
 };
 
 const stats: Stat[] = [
-  { label: "Happy Guests", value: 25000, suffix: "+" },
-  { label: "Years of Hospitality", value: 10, suffix: "+" },
-  { label: "Beachfront Rooms", value: 20, suffix: "+" },
+  { label: "Happy Guests", value: 1000, suffix: "+" },
+  { label: "Years of Hospitality", value: 5, suffix: "+" },
+  { label: "Beachfront Rooms", value: 5, suffix: "+" },
   { label: "5★ Reviews", value: 1200, suffix: "+" },
 ];
 

@@ -60,7 +60,7 @@ export default function Footer() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="text-2xl font-bold mb-4">Shanora Beach Hotel</h2>
+          <h2 className="text-2xl font-bold mb-4">NAVA B&B Mirissa</h2>
           <p className="text-sm text-white/80 leading-relaxed">
             Experience peaceful beachfront living in Mirissa. Comfort, nature, and unforgettable memories await you.
           </p>
@@ -91,7 +91,7 @@ export default function Footer() {
           <ul className="space-y-3 text-sm text-white/80">
             <li>📍 Mirissa, Sri Lanka</li>
             <li>📞 +94 77 123 4567</li>
-            <li>✉️ info@shanorabeach.com</li>
+            <li>✉️ info@navabandbmirissa.com</li>
           </ul>
         </motion.div>
 

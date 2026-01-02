@@ -91,7 +91,7 @@ export default function ContactUs() {
           className="w-full h-[400px] rounded-xl overflow-hidden shadow-md"
         >
           <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2519.7835865087154!2d80.46544289379848!3d5.941425284739932!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae13fe08252b549%3A0xa106254f01ee206!2sShanora%20Beach%20Hotel!5e0!3m2!1sen!2slk!4v1766993680816!5m2!1sen!2slk"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3968.373122034343!2d80.46042497397126!3d5.943206529636791!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae13fd32ebcf399%3A0x4fd7167b72c8e00c!2sNAVA%20b%26b%20(Formerly%20Banana%20Garden%20Mirissa)!5e0!3m2!1sen!2slk!4v1767333875095!5m2!1sen!2slk"
             width="100%"
             height="100%"
             className="border-0"

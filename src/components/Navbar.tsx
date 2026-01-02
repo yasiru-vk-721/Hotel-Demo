@@ -46,7 +46,7 @@ export default function Navbar() {
             showLightNavbar ? "text-[#0B3C5D]" : "text-white font-Bold" 
           }`}
         >
-          Business Logo
+          NAVA B&B
         </div>
 
         {/* Desktop Nav */}

@@ -22,94 +22,68 @@ type Room = {
 };
 
 /* =========================
-   ROOM DATA (require syntax)
+   ROOM DATA
 ========================= */
 const rooms: Room[] = [
   {
-    title: "Double Room with Balcony",
-    size: "16 m²",
-    bed: "1 Extra-large Double Bed",
-    rating: "Comfy beds · 8.6 (200 reviews)",
+    title: "Twin Room with Balcony",
+    size: "17 m²",
+    bed: "2 Single Beds",
+    rating: "Comfy beds · 9 (130 reviews)",
     description:
-      "The double room features air conditioning, a private entrance, a balcony with sea views as well as a private bathroom boasting a shower.",
-    views: ["Sea view", "Garden view"],
-    highlights: [
+      "The twin room features air conditioning, a private entrance, a balcony with garden views as well as a private bathroom boasting a shower. The unit has 2 beds.",
+    views: ["Garden view"],
+    highlights: ["Balcony", "Air conditioning", "Private bathroom", "Free WiFi"],
+    bathroom: ["Bidet", "Toilet", "Bath or shower", "Towels", "Hairdryer", "Toilet paper"],
+    facilities: [
       "Balcony",
       "Air conditioning",
-      "Soundproofing",
-      "Free WiFi",
-      "Private bathroom",
-    ],
-    bathroom: ["Free toiletries", "Shower", "Toilet", "Towels", "Toilet paper"],
-    facilities: [
+      "Sofa",
+      "Linen",
       "Socket near the bed",
-      "Tile / marble floor",
       "Private entrance",
       "Refrigerator",
       "Electric kettle",
       "Wardrobe or closet",
-      "Clothes rack",
-      "Ironing facilities",
-      "Hand sanitiser",
+      "Drying rack for clothing",
     ],
     smoking: "No smoking",
     images: [
-      require("../resource/330490273.jpg") as StaticImageData,
-      require("../resource/330490293.jpg") as StaticImageData,
+      require("../resource/t1.jpg") as StaticImageData,
+      require("../resource/t2.jpg") as StaticImageData,
+      require("../resource/t3.jpg") as StaticImageData,
+
     ],
   },
   {
-    title: "Double Room with Sea View",
-    size: "18 m²",
-    bed: "1 Extra-large Double Bed",
-    rating: "Comfy beds · 8.6 (200 reviews)",
+    title: "Double Room with Balcony",
+    size: "25 m²",
+    bed: "1 Large Double Bed",
+    rating: "Comfy beds · 9 (130 reviews)",
     description:
-      "The double room offers air conditioning, a private entrance, a balcony with sea views as well as a private bathroom featuring a shower.",
-    views: ["Sea view", "Garden view"],
-    highlights: ["Balcony", "Sea view", "Air conditioning", "Soundproofing", "Free WiFi"],
-    bathroom: ["Free toiletries", "Shower", "Toilet", "Towels", "Toilet paper"],
+      "The double room provides air conditioning, a private entrance, a balcony with garden views as well as a private bathroom featuring a shower. The unit offers 1 bed.",
+    views: ["Garden view"],
+    highlights: ["Balcony", "Air conditioning", "Private bathroom", "Free WiFi"],
+    bathroom: ["Bidet", "Toilet", "Bath or shower", "Towels", "Hairdryer", "Toilet paper"],
     facilities: [
+      "Balcony",
+      "Air conditioning",
+      "Sofa",
+      "Linen",
       "Socket near the bed",
-      "Tile / marble floor",
+      "Desk",
       "Private entrance",
       "Refrigerator",
       "Electric kettle",
       "Wardrobe or closet",
-      "Clothes rack",
-      "Ironing facilities",
-      "Hand sanitiser",
+      "Drying rack for clothing",
     ],
     smoking: "No smoking",
     images: [
-      require("../resource/330490309.jpg") as StaticImageData,
-      require("../resource/330490293.jpg") as StaticImageData,
-    ],
-  },
-  {
-    title: "Deluxe Triple Room with Sea View",
-    size: "20 m²",
-    bed: "1 Double Bed + 1 Extra-large Double Bed",
-    rating: "Comfy beds · 8.6 (200 reviews)",
-    description:
-      "The triple room offers air conditioning, a private entrance, a balcony with sea views as well as a private bathroom featuring a shower.",
-    views: ["Sea view", "Garden view"],
-    highlights: ["Balcony", "Sea view", "Air conditioning", "Soundproofing", "Free WiFi"],
-    bathroom: ["Free toiletries", "Shower", "Toilet", "Towels", "Toilet paper"],
-    facilities: [
-      "Socket near the bed",
-      "Tile / marble floor",
-      "Private entrance",
-      "Refrigerator",
-      "Electric kettle",
-      "Wardrobe or closet",
-      "Clothes rack",
-      "Ironing facilities",
-      "Hand sanitiser",
-    ],
-    smoking: "No smoking",
-    images: [
-      require("../resource/330490293.jpg") as StaticImageData,
-      require("../resource/330490273.jpg") as StaticImageData,
+      require("../resource/d1.jpg") as StaticImageData,
+      require("../resource/d2.jpg") as StaticImageData,
+      require("../resource/d3.jpg") as StaticImageData,
+      require("../resource/d4.jpg") as StaticImageData,
     ],
   },
 ];
@@ -154,11 +128,9 @@ function Gallery({ images }: { images: StaticImageData[] }) {
       >
         ›
       </button>
-
     </div>
   );
 }
-
 
 /* =========================
    COLLAPSIBLE COMPONENT
@@ -298,33 +270,6 @@ export default function Rooms() {
                   >
                     Booking.com
                   </a>
-
-                  {/* <a
-                    href="https://www.tripadvisor.com"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-2 bg-[#34E0A1] text-black px-6 py-3 rounded-full hover:opacity-90 transition"
-                  >
-                    Tripadvisor
-                  </a>
-
-                  <a
-                    href="https://www.agoda.com"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-2 bg-[#FF5A5F] text-white px-6 py-3 rounded-full hover:opacity-90 transition"
-                  >
-                    Agoda
-                  </a>
-
-                  <a
-                    href="https://www.expedia.com"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-2 bg-[#0071c2] text-white px-6 py-3 rounded-full hover:opacity-90 transition"
-                  >
-                    Expedia
-                  </a> */}
                 </div>
               </div>
             </motion.div>

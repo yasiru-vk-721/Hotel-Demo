@@ -2,9 +2,9 @@
 
 import { motion, AnimatePresence } from "framer-motion";
 import { useEffect, useState } from "react";
-import pic1 from "../resource/330490389.jpg"; // Local image import
-import pic3 from "../resource/330490222.jpg"; // Local image import
-import pic2 from "../resource/32980.jpg"; // Local image import
+import pic1 from "../resource/1006.jpg"; // Local image import
+import pic3 from "../resource/32980.jpg"; // Local image import
+import pic2 from "../resource/16705.jpg"; // Local image import
 import { StaticImageData } from "next/image";
 
 // Define type for a slide
@@ -17,7 +17,7 @@ type Slide = {
 const slides: Slide[] = [
   {
     image: pic1, // local image
-    title: "Shanora Beach Hotel",
+    title: "NAVA B&B Mirissa",
     subtitle: "Oceanfront comfort in the heart of Mirissa",
   },
   {
@@ -82,7 +82,7 @@ export default function Hero() {
           </p>
 
           <a
-            href="/home"
+            href="/connact"
             className="inline-block bg-[#E6C27A] text-black px-8 py-4 rounded-full font-semibold hover:scale-105 transition"
           >
             Contact Us
