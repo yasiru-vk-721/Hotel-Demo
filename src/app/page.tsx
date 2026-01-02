@@ -13,6 +13,7 @@ import RoomsPreview from "@/components/RoomsPreview";
 import ContactUs from "@/components/ContactUs";
 import HotelStats from "@/components/Stats";
 import GymSection from "@/components/GymSection";
+import FindUs from "@/components/FindUs";
 
 
 export default function Home() {
@@ -50,9 +51,9 @@ export default function Home() {
         <Reviews />
       </section>
 
-      {/* <section className="snap-start">
-        <ContactUs />
-      </section> */}
+      <section className="snap-start">
+        <FindUs />
+      </section>
 
     </main>
   );
