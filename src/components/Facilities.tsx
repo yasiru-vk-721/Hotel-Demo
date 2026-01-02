@@ -18,9 +18,9 @@ const facilities = [
   { icon: FaWifi, label: "Free Wi-Fi" },
 { icon: FaBus, label: "Airport Shuttle" },
   { icon: FaParking, label: "Free Parking" },
-  { icon: FaUtensils, label: "Restaurant" },
+  // { icon: FaUtensils, label: "Restaurant" },
   { icon: FaSmokingBan, label: "Non-Smoking Rooms" },
-  { icon: FaGlassCheers, label: "Bar" },
+  // { icon: FaGlassCheers, label: "Bar" },
   { icon: FaCoffee, label: "Wonderful Breakfast" },
 ];
 

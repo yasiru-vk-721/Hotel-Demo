@@ -8,7 +8,7 @@ import gym1 from "@/resource/navagym2.jpg";
 import gym2 from "@/resource/navagym3.jpg";
 import gym3 from "@/resource/navagym4.jpg";
 
-const images = [gym1, gym2, gym3];
+const images = [gym1, gym2, gym3,gym1, gym3, gym2];
 
 export default function GymSection() {
   return (

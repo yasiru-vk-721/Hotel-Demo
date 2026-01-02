@@ -17,7 +17,7 @@ export default function RoomsPreview() {
   useEffect(() => {
     const timer = setInterval(() => {
       setActive((prev) => (prev + 1) % images.length);
-    }, 2000); // ⏱️ change every 3.5s
+    }, 3500); // ⏱️ change every 3.5s
 
     return () => clearInterval(timer);
   }, []);
@@ -52,8 +52,7 @@ export default function RoomsPreview() {
         </motion.div>
 
         {/* RIGHT IMAGE COLLAGE */}
-        <div className="relative h-[460px]">
-
+        <div className="relative h-[460px] flex justify-center items-center">
           {images.map((img, i) => {
             const isActive = i === active;
 
@@ -61,33 +60,36 @@ export default function RoomsPreview() {
               <motion.div
                 key={i}
                 animate={{
-                  opacity: isActive ? 1 : 0.45,
+                  opacity: isActive ? 1 : 0.4,
                   scale: isActive ? 1 : 0.94,
                   y: isActive ? -10 : 0,
                 }}
                 transition={{ duration: 0.8 }}
                 className={`absolute rounded-3xl overflow-hidden shadow-2xl
-                ${i === 0 ? "top-0 left-0" : ""}
-                ${i === 1 ? "top-20 left-12" : ""}
-                ${i === 2 ? "top-40 left-24" : ""}
-
+                  ${i === 0 ? "top-0 left-0" : ""}
+                  ${i === 1 ? "top-20 left-12" : ""}
+                  ${i === 2 ? "top-40 left-24" : ""}
                 `}
                 style={{
                   zIndex: isActive ? 30 : i + 10,
                   width: "75%",
                   aspectRatio: "16 / 10",
+                  background: "rgba(0,0,0,0.08)", // subtle background behind light images
+                  backdropFilter: "blur(4px)",      // makes images pop
                 }}
               >
                 <Image
                   src={img}
                   alt={`Room ${i + 1}`}
                   fill
-                  className="object-cover"
+                  className="object-cover rounded-3xl"
                 />
+
+                {/* Optional overlay gradient for better visibility */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent rounded-3xl pointer-events-none" />
               </motion.div>
             );
           })}
-
         </div>
       </div>
     </section>
