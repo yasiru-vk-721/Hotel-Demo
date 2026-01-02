@@ -37,7 +37,7 @@ export default function Welcome() {
           className="max-w-4xl mx-auto text-center mb-24"
         >
           <p className="text-[#E6C27A] uppercase tracking-widest text-2xl font-semibold mb-5">
-            Welcome to Shanora Beach
+            Welcome to NAVA B&B
           </p>
 
           <h2 className="text-3xl md:text-5xl font-bold text-[#0B3C5D] mb-8 leading-tight">
@@ -45,7 +45,7 @@ export default function Welcome() {
           </h2>
 
           <p className="text-gray-600 text-lg md:text-xl leading-relaxed">
-            Shanora Beach is a peaceful coastal escape in Mirissa where
+            NAVA B&B is a peaceful coastal escape in Mirissa where
             simplicity, comfort, and warm Sri Lankan hospitality come together.
             Wake up to the sound of the ocean, step onto soft golden sand, and
             enjoy a stay designed for unhurried moments and genuine relaxation.

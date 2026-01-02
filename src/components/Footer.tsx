@@ -121,7 +121,7 @@ export default function Footer() {
 
       {/* Bottom bar */}
       <div className="border-t border-white/10 py-6 text-center text-sm text-white/70">
-        © {new Date().getFullYear()} Shanora Beach Hotel. All rights reserved.
+        © {new Date().getFullYear()} NAVA B&B Mirissa. All rights reserved.
       </div>
     </footer>
   );

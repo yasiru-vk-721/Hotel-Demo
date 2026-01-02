@@ -45,11 +45,9 @@ export default function GymSection() {
               />
               {/* Optional overlay */}
               <motion.div
-                className="absolute inset-0 bg-black bg-opacity-20 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity"
+                className="absolute inset-0  bg-opacity-20 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity"
               >
-                <p className="text-white font-semibold text-lg">
-                  Gym {i + 1}
-                </p>
+
               </motion.div>
             </motion.div>
           ))}
